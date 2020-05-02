@@ -1,0 +1,14 @@
+@media screen and (max-width: 600px) {
+    .column {
+      
+    }
+  }
+
+  .card{
+    background-color: blue !important;
+    margin-left: 25px;
+    height: auto;
+    width: auto;
+    font-size: 18px;
+    color: white;
+    }
