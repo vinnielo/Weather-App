@@ -1,6 +1,12 @@
-const cities = []
+const citiesArr =  []
 
-// cityParse = JSON.parse(localStorage.getItem(inputVal))  
+
+    // if(localStorage.cityRecord){
+        // citiesArr = JSON.parse(localStorage.cityRecord)
+    // }
+
+
+  
 
 $(document).ready(function () {
   //click event for search
@@ -30,7 +36,7 @@ $(document).ready(function () {
         
         `;
       cityDiv.html(cityHTML);
-      $("#today").append(cityDiv);
+      $("#today").html(cityDiv);
       //add icon
       //look at doc to create forcast
     });
@@ -49,41 +55,41 @@ $(document).ready(function () {
             <div class="card col-md-2" style="width: 18rem;">
                 <div class="card-body">
                     <h5 class="card-title">${res.list[0].dt_txt}</h5>
-                        <img src="http://openweathermap.org/img/w/${res.list[4].weather[0].icon}.png"></img>
-                        <p class="card-text">Temp: ${res.list[4].main.temp} &#8457;</p>
-                        <p class="card-text">Humidity: ${res.list[4].main.humidity} %</p>
+                        <img src="http://openweathermap.org/img/w/${res.list[0].weather[0].icon}.png"></img>
+                        <p class="card-text">Temp: ${res.list[0].main.temp_max} &#8457;</p>
+                        <p class="card-text">Humidity: ${res.list[0].main.humidity} %</p>
                 </div>
             </div>
             <div class="card col-md-2" style="width: 18rem;">
             <div class="card-body">
-                    <h5 class="card-title">${res.list[11].dt_txt}</h5>
-                    <img src="http://openweathermap.org/img/w/${res.list[12].weather[0].icon}.png"></img>
-                    <p class="card-text">Temp: ${res.list[12].main.temp} &#8457;</p>
-                    <p class="card-text">Humidity: ${res.list[12].main.humidity} %</p>                 
+                    <h5 class="card-title">${res.list[8].dt_txt}</h5>
+                    <img src="http://openweathermap.org/img/w/${res.list[8].weather[0].icon}.png"></img>
+                    <p class="card-text">Temp: ${res.list[8].main.temp} &#8457;</p>
+                    <p class="card-text">Humidity: ${res.list[8].main.humidity} %</p>                 
                 </div>
         </div>
         <div class="card col-md-2" style="width: 18rem;">
             <div class="card-body">
-                    <h5 class="card-title">${res.list[20].dt_txt}</h5>
-                    <img src="http://openweathermap.org/img/w/${res.list[20].weather[0].icon}.png"></img>
-                    <p class="card-text">Temp: ${res.list[20].main.temp} &#8457;</p>
-                    <p class="card-text">Humidity: ${res.list[20].main.humidity} %</p>                 
+                    <h5 class="card-title">${res.list[16].dt_txt}</h5>
+                    <img src="http://openweathermap.org/img/w/${res.list[16].weather[0].icon}.png"></img>
+                    <p class="card-text">Temp: ${res.list[16].main.temp} &#8457;</p>
+                    <p class="card-text">Humidity: ${res.list[16].main.humidity} %</p>                 
                 </div>
         </div>
         <div class="card col-md-2" style="width: 18rem;">
             <div class="card-body">
-                    <h5 class="card-title">${res.list[28].dt_txt}</h5>
-                    <img src="http://openweathermap.org/img/w/${res.list[28].weather[0].icon}.png"></img>
-                    <p class="card-text">Temp: ${res.list[28].main.temp} &#8457;</p>
-                    <p class="card-text">Humidity: ${res.list[28].main.humidity} %</p>                 
+                    <h5 class="card-title">${res.list[24].dt_txt}</h5>
+                    <img src="http://openweathermap.org/img/w/${res.list[24].weather[0].icon}.png"></img>
+                    <p class="card-text">Temp: ${res.list[24].main.temp} &#8457;</p>
+                    <p class="card-text">Humidity: ${res.list[24].main.humidity} %</p>                 
                 </div>
         </div>
         <div class="card col-md-2" style="width: 18rem;">
             <div class="card-body">
-                    <h5 class="card-title">${res.list[36].dt_txt}</h5>
-                    <img src="http://openweathermap.org/img/w/${res.list[36].weather[0].icon}.png"></img>
-                    <p class="card-text">Temp: ${res.list[36].main.temp} &#8457;</p>
-                    <p class="card-text">Humidity: ${res.list[36].main.humidity} %</p>                 
+                    <h5 class="card-title">${res.list[32].dt_txt}</h5>
+                    <img src="http://openweathermap.org/img/w/${res.list[32].weather[0].icon}.png"></img>
+                    <p class="card-text">Temp: ${res.list[32].main.temp} &#8457;</p>
+                    <p class="card-text">Humidity: ${res.list[32].main.humidity} %</p>                 
                 </div>
         </div>
         
@@ -91,7 +97,7 @@ $(document).ready(function () {
         </div>
         `;
       fiveDiv.html(cityFiveDay);
-      $("#forecast").append(fiveDiv);
+      $("#forecast").html(fiveDiv);
       console.log(`${res.list[1].main.temp}`);
     });
 
@@ -112,13 +118,13 @@ $(document).ready(function () {
     // }
 // local storage to save city on the page
 
-    
-function storedCities(){
+    const cityObj = {
+        city: inputVal
+    }
 
-localStorage.setItem("city", JSON.stringify(inputVal))}
-cities.push(inputVal)
+citiesArr.push(inputVal)
+localStorage.cityRecord = JSON.stringify(citiesArr)
 
-storedCities()
   });
 
 });
