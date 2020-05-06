@@ -1,9 +1,9 @@
-const citiesArr =  []
+var citiesArr =  []
 
 
-    // if(localStorage.cityRecord){
-        // citiesArr = JSON.parse(localStorage.cityRecord)
-    // }
+    if(localStorage.cityRecord){
+        citiesArr = JSON.parse(localStorage.cityRecord)
+    }
 
 
   
