@@ -15,7 +15,7 @@ $(document).ready(function () {
       dataType: "json",
       success: function(res){
     
-      console.log(res.cod);
+      console.log(res);
         //create div with all html
         const cityDiv = $("<div>");
         cityDiv.attr("class", "city-weather-container");
@@ -32,10 +32,30 @@ $(document).ready(function () {
           `;
         cityDiv.html(cityHTML);
         $("#today").html(cityDiv);
+        
+    var latitude = res.coord.lat;
+    var longitude = res.coord.lon;
+    const queryUVIndex = `http://api.openweathermap.org/data/2.5/uvi?appid=44a753813c9ae4adb9510813a1fbdff9&lat=${latitude}&lon=${longitude}`
+    //Second Ajax to get UV Index
+    $.ajax({
+      url: queryUVIndex,
+      method: "GET",
+      dataType: "json",
+      success: function (res) {
+        const uvIndex = res.value;
+        console.log(res)
+        $("#today").append(`<div class="card-text"><h4>UV Index: + ${uvIndex}</h4></div><br>`)
+        
+      }
+      
+})
+    
     },
-     error: function(res){       
-         return       
-    }
+    error: function() {
+      //clear search input container
+      $('#search-value').val('');
+      return;
+  }
   });
 }
 
@@ -46,8 +66,8 @@ $(document).ready(function () {
     $.ajax({
       type: "GET",
       url: queryURL,
-      dataType: "json",
-      success: function(res){
+      dataType: "json"
+    }).then(function(res){
         console.log(res)
         const fiveDiv = $("<div>");
         fiveDiv.attr("class", "city-five-container");
@@ -98,13 +118,12 @@ $(document).ready(function () {
         fiveDiv.html(cityFiveDay);
         $("#forecast").html(fiveDiv);
      
-    },
-    error: function(res){
-      
-      return
-    }
+    
+    
     });
   };
+
+              
 
   //click event for search
   $("#search-button").on("click", () => {
@@ -114,8 +133,9 @@ $(document).ready(function () {
     //make API call
     singleDayData(inputVal);
     fiveDayData(inputVal);
+    // uvIndex(inputVal);
 
-    // if(inputVal ===  ){
+   
     const cityButton = $("<button>");
     cityButton.attr("class", "city-button");
     cityButton.attr("data", inputVal);
@@ -147,12 +167,16 @@ $(document).ready(function () {
       fiveDayData(firstDataIndex);
       //create buttons
       for (let i = 0; i < localCityData.length; i++) {
+        if(citiesArr.indexOf(localCityData[i]) === -1){
+        
         const cityButtonEl = $("<button>");
         cityButtonEl.attr("class", "city-button");
         cityButtonEl.attr("data", localCityData[i].cityName);
         cityButtonEl.text(localCityData[i].cityName);
         $(".history").prepend(cityButtonEl);
+        }        
       }
+      return citiesArr
     }
   };
 
