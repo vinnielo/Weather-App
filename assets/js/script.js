@@ -21,7 +21,7 @@ $(document).ready(function () {
 
   //create current weather div
   const singleDayData = (inputVal) => {
-    const queryURL = `http://api.openweathermap.org/data/2.5/weather?q=${inputVal}&appid=44a753813c9ae4adb9510813a1fbdff9&units=imperial`;
+    const queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${inputVal}&appid=44a753813c9ae4adb9510813a1fbdff9&units=imperial`;
     $.ajax({
       type: "GET",
       url: queryURL,
@@ -34,7 +34,7 @@ $(document).ready(function () {
 
         const cityHTML = `
             <div class="city-component-1">
-              <h1><span class="city-name">${res.name} (${date})</span><img src="http://openweathermap.org/img/w/${res.weather[0].icon}.png"></img> </h1>          
+              <h1><span class="city-name">${res.name} (${date})</span><img src="https://openweathermap.org/img/w/${res.weather[0].icon}.png"></img> </h1>          
             </div>
             <div class="city-component-2 city-temp"><h4>Temperature: ${res.main.temp} &#8457;</h4></div>
             <div class="city-component-3 city-hum"><h4>Humidity: ${res.main.humidity}%</h4></div>
@@ -45,7 +45,7 @@ $(document).ready(function () {
 
         var latitude = res.coord.lat;
         var longitude = res.coord.lon;
-        const queryUVIndex = `http://api.openweathermap.org/data/2.5/uvi?appid=44a753813c9ae4adb9510813a1fbdff9&lat=${latitude}&lon=${longitude}`;
+        const queryUVIndex = `https://api.openweathermap.org/data/2.5/uvi?appid=44a753813c9ae4adb9510813a1fbdff9&lat=${latitude}&lon=${longitude}`;
         //Second Ajax to get UV Index
         $.ajax({
           url: queryUVIndex,
@@ -70,7 +70,7 @@ $(document).ready(function () {
 
   //create five day forecast
   const fiveDayData = (inputVal) => {
-    const queryURL = `http://api.openweathermap.org/data/2.5/forecast?q=${inputVal}&appid=44a753813c9ae4adb9510813a1fbdff9&units=imperial`;
+    const queryURL = `https://api.openweathermap.org/data/2.5/forecast?q=${inputVal}&appid=44a753813c9ae4adb9510813a1fbdff9&units=imperial`;
 
     $.ajax({
       type: "GET",
@@ -87,7 +87,7 @@ $(document).ready(function () {
                     <h5 class="card-title">${
                       tomorrow.toISOString().split("T")[0]
                     }</h5>
-                        <img src="http://openweathermap.org/img/w/${
+                        <img src="https://openweathermap.org/img/w/${
                           res.list[0].weather[0].icon
                         }.png"></img>
                         <p class="card-text">Temp: ${
@@ -103,7 +103,7 @@ $(document).ready(function () {
                     <h5 class="card-title">${
                       day3.toISOString().split("T")[0]
                     }</h5>
-                    <img src="http://openweathermap.org/img/w/${
+                    <img src="https://openweathermap.org/img/w/${
                       res.list[8].weather[0].icon
                     }.png"></img>
                     <p class="card-text">Temp: ${
@@ -119,7 +119,7 @@ $(document).ready(function () {
                     <h5 class="card-title">${
                       day4.toISOString().split("T")[0]
                     }</h5>
-                    <img src="http://openweathermap.org/img/w/${
+                    <img src="https://openweathermap.org/img/w/${
                       res.list[16].weather[0].icon
                     }.png"></img>
                     <p class="card-text">Temp: ${
@@ -135,7 +135,7 @@ $(document).ready(function () {
                     <h5 class="card-title">${
                       day5.toISOString().split("T")[0]
                     }</h5>
-                    <img src="http://openweathermap.org/img/w/${
+                    <img src="https://openweathermap.org/img/w/${
                       res.list[24].weather[0].icon
                     }.png"></img>
                     <p class="card-text">Temp: ${
@@ -151,7 +151,7 @@ $(document).ready(function () {
                     <h5 class="card-title">${
                       day6.toISOString().split("T")[0]
                     }</h5>
-                    <img src="http://openweathermap.org/img/w/${
+                    <img src="https://openweathermap.org/img/w/${
                       res.list[32].weather[0].icon
                     }.png"></img>
                     <p class="card-text">Temp: ${
