@@ -6,6 +6,10 @@ I used the openweather api to gather this information. It also stores the data f
 
 The only problems I encountered (that I will work on once I circle back to it) was to not create a duplicate of the button. I started working on the indexOf() but I couldn't get it to work. I also couldn't get it to not add a city that doesn't exist.
 
+## URL
+
+https://vinnielo.github.io/Weather-App/
+
 ![step1](assets/images/open.png) 
 ![step2](assets/images/step2.png)
 ![savedcitybtns](assets/images/savedcitybtns.png)
